@@ -114,35 +114,34 @@ export default function Dashboard() {
   ]
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-hero border border-border/10 p-8">
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
-              <Zap className="h-8 w-8 text-primary" />
+    <div className="p-6 space-y-8">
+      {/* Clean Hero Section */}
+      <div className="relative overflow-hidden rounded-xl border bg-card p-8">
+        <div className="flex items-start justify-between">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Zap className="h-5 w-5 text-primary" />
+              </div>
+              <h1 className="text-2xl font-semibold text-foreground">Welcome back</h1>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold text-foreground">Welcome back!</h1>
-              <p className="text-muted-foreground">Manage your AI infrastructure with ease</p>
-            </div>
+            <p className="text-muted-foreground">Manage your AI models and infrastructure</p>
           </div>
-          <div className="flex gap-4">
-            <Button variant="hero" size="lg" asChild>
+          <div className="flex gap-3">
+            <Button size="sm" asChild>
               <Link to="/chat">
-                <MessageSquare className="h-5 w-5" />
-                Start Chatting
+                <MessageSquare className="h-4 w-4 mr-2" />
+                Start Chat
               </Link>
             </Button>
-            <Button variant="glass" size="lg" asChild>
+            <Button variant="outline" size="sm" asChild>
               <Link to="/admin/models">
-                <Brain className="h-5 w-5" />
-                Configure Models
+                <Brain className="h-4 w-4 mr-2" />
+                Models
               </Link>
             </Button>
           </div>
         </div>
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-primary opacity-10 rounded-full blur-3xl"></div>
       </div>
 
       {/* Real-time Overview */}
@@ -154,48 +153,48 @@ export default function Dashboard() {
         </TabsList>
 
         <TabsContent value="metrics" className="space-y-6">
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Live Metrics Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {stats.map((stat, index) => (
-              <Card key={stat.title} className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-smooth animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
+              <Card key={stat.title} className="border shadow-clean hover:shadow-clean-md transition-all duration-200" style={{ animationDelay: `${index * 50}ms` }}>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     {stat.title}
                   </CardTitle>
-                  <div className="flex items-center gap-2">
-                    {stat.trend === 'up' && <ArrowUp className="h-3 w-3 text-green-500" />}
-                    {stat.trend === 'down' && <ArrowDown className="h-3 w-3 text-green-500" />}
-                    {stat.trend === 'warning' && <AlertTriangle className="h-3 w-3 text-yellow-500" />}
-                    <stat.icon className={`h-5 w-5 ${stat.color}`} />
+                  <div className="flex items-center gap-1">
+                    {stat.trend === 'up' && <ArrowUp className="h-3 w-3 text-green-600" />}
+                    {stat.trend === 'down' && <ArrowDown className="h-3 w-3 text-green-600" />}
+                    {stat.trend === 'warning' && <AlertTriangle className="h-3 w-3 text-amber-500" />}
+                    <stat.icon className={`h-4 w-4 ${stat.color}`} />
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                  <p className="text-xs text-muted-foreground flex items-center gap-1">
+                  <div className="text-xl font-semibold text-foreground">{stat.value}</div>
+                  <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
                     <span className={
-                      stat.trend === 'up' ? "text-green-500" : 
-                      stat.trend === 'down' ? "text-green-500" : 
-                      "text-yellow-500"
+                      stat.trend === 'up' ? "text-green-600" : 
+                      stat.trend === 'down' ? "text-green-600" : 
+                      "text-amber-500"
                     }>
                       {stat.change}
                     </span>
-                    <span className="text-muted-foreground">vs last hour</span>
+                    <span>vs last hour</span>
                   </p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          {/* Real-time Chart */}
-          <Card className="bg-card/50 backdrop-blur-sm border-border/50">
+          {/* Activity Chart */}
+          <Card className="border shadow-clean">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Activity className="h-5 w-5 text-primary" />
-                Live Activity (Last 6 Hours)
+              <CardTitle className="text-base font-medium flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Live Activity
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer width="100%" height={240}>
                 <AreaChart data={realTimeData}>
                   <XAxis dataKey="time" stroke="hsl(var(--muted-foreground))" fontSize={12} />
                   <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} />
@@ -203,7 +202,8 @@ export default function Dashboard() {
                     contentStyle={{ 
                       backgroundColor: 'hsl(var(--card))', 
                       border: '1px solid hsl(var(--border))',
-                      borderRadius: '8px'
+                      borderRadius: '6px',
+                      fontSize: '12px'
                     }}
                   />
                   <Area 
@@ -211,16 +211,18 @@ export default function Dashboard() {
                     dataKey="requests" 
                     stroke="hsl(var(--primary))" 
                     fill="hsl(var(--primary))" 
-                    fillOpacity={0.3}
+                    fillOpacity={0.1}
+                    strokeWidth={2}
                     name="Requests"
                   />
-                  <Area 
+                  <Area
                     type="monotone" 
                     dataKey="users" 
                     stroke="hsl(var(--accent))" 
                     fill="hsl(var(--accent))" 
-                    fillOpacity={0.2}
-                    name="Active Users"
+                    fillOpacity={0.1}
+                    strokeWidth={2}
+                    name="Users"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -228,28 +230,28 @@ export default function Dashboard() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="health" className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <TabsContent value="health" className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {systemHealth.map((service, index) => (
-              <Card key={service.name} className="bg-card/50 backdrop-blur-sm border-border/50">
+              <Card key={service.name} className="border shadow-clean">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">{service.name}</CardTitle>
                   <div className="flex items-center gap-2">
-                    {service.status === 'healthy' && <CheckCircle className="h-4 w-4 text-green-500" />}
-                    {service.status === 'warning' && <AlertTriangle className="h-4 w-4 text-yellow-500" />}
+                    {service.status === 'healthy' && <CheckCircle className="h-4 w-4 text-green-600" />}
+                    {service.status === 'warning' && <AlertTriangle className="h-4 w-4 text-amber-500" />}
                     {service.status === 'error' && <XCircle className="h-4 w-4 text-red-500" />}
-                    <Badge variant={service.status === 'healthy' ? 'default' : 'destructive'}>
+                    <Badge variant={service.status === 'healthy' ? 'default' : 'destructive'} className="text-xs">
                       {service.status}
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Uptime</span>
                       <span className="font-medium">{service.uptime}%</span>
                     </div>
-                    <Progress value={service.uptime} className="h-2" />
+                    <Progress value={service.uptime} className="h-1.5" />
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Response Time</span>
                       <span className="font-medium">{service.response}</span>
@@ -261,10 +263,10 @@ export default function Dashboard() {
           </div>
         </TabsContent>
 
-        <TabsContent value="resources" className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <TabsContent value="resources" className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {resourceUsage.map((resource, index) => (
-              <Card key={resource.name} className="bg-card/50 backdrop-blur-sm border-border/50">
+              <Card key={resource.name} className="border shadow-clean">
                 <CardHeader>
                   <CardTitle className="text-sm font-medium">{resource.name}</CardTitle>
                 </CardHeader>
@@ -274,7 +276,7 @@ export default function Dashboard() {
                       <span className="text-muted-foreground">Usage</span>
                       <span className="font-medium">{resource.value}%</span>
                     </div>
-                    <Progress value={resource.value} className="h-3" />
+                    <Progress value={resource.value} className="h-2" />
                     <div className="flex justify-between text-xs text-muted-foreground">
                       <span>0%</span>
                       <span>100%</span>
