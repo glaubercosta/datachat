@@ -18,22 +18,22 @@ export default function Dashboard() {
   ]
 
   const systemHealth = [
-    { name: 'API Gateway', status: 'healthy', uptime: 99.9, response: '145ms' },
+    { name: 'Gateway API', status: 'healthy', uptime: 99.9, response: '145ms' },
     { name: 'Database', status: 'healthy', uptime: 99.8, response: '23ms' },
-    { name: 'LLM Models', status: 'warning', uptime: 98.5, response: '1.2s' },
-    { name: 'Cache Layer', status: 'healthy', uptime: 99.7, response: '8ms' }
+    { name: 'Models LLM', status: 'warning', uptime: 98.5, response: '1.2s' },
+    { name: 'Cache', status: 'healthy', uptime: 99.7, response: '8ms' }
   ]
 
   const resourceUsage = [
-    { name: 'CPU Usage', value: 65, max: 100, color: 'bg-blue-500' },
-    { name: 'Memory', value: 78, max: 100, color: 'bg-green-500' },
-    { name: 'Storage', value: 42, max: 100, color: 'bg-purple-500' },
-    { name: 'Bandwidth', value: 89, max: 100, color: 'bg-orange-500' }
+    { name: 'Uso de CPU', value: 65, max: 100, color: 'bg-blue-500' },
+    { name: 'Memória', value: 78, max: 100, color: 'bg-green-500' },
+    { name: 'Armazenamento', value: 42, max: 100, color: 'bg-purple-500' },
+    { name: 'Largura de Banda', value: 89, max: 100, color: 'bg-orange-500' }
   ]
 
   const stats = [
     {
-      title: "Active Requests",
+      title: "Requisições Ativas",
       value: "1,284",
       change: "+12%",
       icon: MessageSquare,
@@ -49,7 +49,7 @@ export default function Dashboard() {
       trend: "warning"
     },
     {
-      title: "Requests/min",
+      title: "Requisições/min",
       value: "847",
       change: "+18%",
       icon: Activity,
@@ -57,7 +57,7 @@ export default function Dashboard() {
       trend: "up"
     },
     {
-      title: "Active Users",
+      title: "Usuários Ativos",
       value: "156",
       change: "+5%",
       icon: Users,
@@ -65,7 +65,7 @@ export default function Dashboard() {
       trend: "up"
     },
     {
-      title: "Response Time",
+      title: "Tempo de Resposta",
       value: "1.2s",
       change: "-8%",
       icon: Clock,
@@ -73,7 +73,7 @@ export default function Dashboard() {
       trend: "down"
     },
     {
-      title: "Cost Today",
+      title: "Custo Hoje",
       value: "$247.80",
       change: "+12%",
       icon: DollarSign,
@@ -84,29 +84,29 @@ export default function Dashboard() {
 
   const quickActions = [
     {
-      title: "Start New Chat",
-      description: "Begin a conversation with your AI assistant",
+      title: "Iniciar Chat",
+      description: "Comece uma conversa com seu assistente AI",
       icon: MessageSquare,
       href: "/chat",
       color: "bg-gradient-primary"
     },
     {
-      title: "Configure Database",
-      description: "Set up or modify database connections",
+      title: "Configurar Database",
+      description: "Configure ou modifique conexões de banco de dados",
       icon: Database,
       href: "/admin/database",
       color: "bg-gradient-accent"
     },
     {
-      title: "Manage API Keys",
-      description: "Update your LLM provider credentials",
+      title: "Gerenciar Chaves API",
+      description: "Atualize as credenciais dos seus provedores LLM",
       icon: Key,
       href: "/admin/api-keys",
       color: "bg-gradient-secondary"
     },
     {
-      title: "Model Settings",
-      description: "Configure AI models and parameters",
+      title: "Configurações de Model",
+      description: "Configure models AI e parâmetros",
       icon: Brain,
       href: "/admin/models",
       color: "bg-gradient-primary"
@@ -123,15 +123,15 @@ export default function Dashboard() {
               <div className="p-2 rounded-lg bg-primary/10">
                 <Zap className="h-5 w-5 text-primary" />
               </div>
-              <h1 className="text-2xl font-semibold text-foreground">Welcome back</h1>
+              <h1 className="text-2xl font-semibold text-foreground">Bem-vindo de volta</h1>
             </div>
-            <p className="text-muted-foreground">Manage your AI models and infrastructure</p>
+            <p className="text-muted-foreground">Gerencie seus models AI e infraestrutura</p>
           </div>
           <div className="flex gap-3">
             <Button size="sm" asChild>
               <Link to="/chat">
                 <MessageSquare className="h-4 w-4 mr-2" />
-                Start Chat
+                Iniciar Chat
               </Link>
             </Button>
             <Button variant="outline" size="sm" asChild>
@@ -147,9 +147,9 @@ export default function Dashboard() {
       {/* Real-time Overview */}
       <Tabs defaultValue="metrics" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="metrics">Live Metrics</TabsTrigger>
-          <TabsTrigger value="health">System Health</TabsTrigger>
-          <TabsTrigger value="resources">Resources</TabsTrigger>
+          <TabsTrigger value="metrics">Métricas ao Vivo</TabsTrigger>
+          <TabsTrigger value="health">Saúde do Sistema</TabsTrigger>
+          <TabsTrigger value="resources">Recursos</TabsTrigger>
         </TabsList>
 
         <TabsContent value="metrics" className="space-y-6">
@@ -178,7 +178,7 @@ export default function Dashboard() {
                     }>
                       {stat.change}
                     </span>
-                    <span>vs last hour</span>
+                    <span>vs última hora</span>
                   </p>
                 </CardContent>
               </Card>
@@ -190,7 +190,7 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="text-base font-medium flex items-center gap-2">
                 <Activity className="h-4 w-4 text-primary" />
-                Live Activity
+                Atividade ao Vivo
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -213,7 +213,7 @@ export default function Dashboard() {
                     fill="hsl(var(--primary))" 
                     fillOpacity={0.1}
                     strokeWidth={2}
-                    name="Requests"
+                    name="Requisições"
                   />
                   <Area
                     type="monotone" 
@@ -222,7 +222,7 @@ export default function Dashboard() {
                     fill="hsl(var(--accent))" 
                     fillOpacity={0.1}
                     strokeWidth={2}
-                    name="Users"
+                    name="Usuários"
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -248,12 +248,12 @@ export default function Dashboard() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Uptime</span>
+                      <span className="text-muted-foreground">Tempo Online</span>
                       <span className="font-medium">{service.uptime}%</span>
                     </div>
                     <Progress value={service.uptime} className="h-1.5" />
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Response Time</span>
+                      <span className="text-muted-foreground">Tempo de Resposta</span>
                       <span className="font-medium">{service.response}</span>
                     </div>
                   </div>
@@ -273,7 +273,7 @@ export default function Dashboard() {
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Usage</span>
+                      <span className="text-muted-foreground">Uso</span>
                       <span className="font-medium">{resource.value}%</span>
                     </div>
                     <Progress value={resource.value} className="h-2" />
@@ -293,7 +293,7 @@ export default function Dashboard() {
       <div>
         <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
           <TrendingUp className="h-5 w-5 text-primary" />
-          Quick Actions
+          Ações Rápidas
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {quickActions.map((action, index) => (
@@ -319,29 +319,29 @@ export default function Dashboard() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5 text-primary" />
-            Recent Activity
+            Atividade Recente
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-4 p-3 rounded-lg bg-accent/10 border border-accent/20">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-foreground">New GPT-4 model configured</p>
-              <p className="text-xs text-muted-foreground">2 minutes ago</p>
+              <p className="text-sm font-medium text-foreground">Novo model GPT-4 configurado</p>
+              <p className="text-xs text-muted-foreground">2 minutos atrás</p>
             </div>
           </div>
           <div className="flex items-center gap-4 p-3 rounded-lg bg-primary/10 border border-primary/20">
             <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-foreground">Database connection updated</p>
-              <p className="text-xs text-muted-foreground">15 minutes ago</p>
+              <p className="text-sm font-medium text-foreground">Conexão do database atualizada</p>
+              <p className="text-xs text-muted-foreground">15 minutos atrás</p>
             </div>
           </div>
           <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/20 border border-secondary/30">
             <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-foreground">New user registered</p>
-              <p className="text-xs text-muted-foreground">1 hour ago</p>
+              <p className="text-sm font-medium text-foreground">Novo usuário registrado</p>
+              <p className="text-xs text-muted-foreground">1 hora atrás</p>
             </div>
           </div>
         </CardContent>

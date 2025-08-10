@@ -28,16 +28,16 @@ import {
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
 const mainItems = [
-  { title: "Dashboard", url: "/", icon: Home },
+  { title: "Painel", url: "/", icon: Home },
   { title: "Chat", url: "/chat", icon: MessageSquare },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
 ]
 
 const adminItems = [
-  { title: "Database Config", url: "/admin/database", icon: Database },
-  { title: "API Keys", url: "/admin/api-keys", icon: Key },
-  { title: "LLM Models", url: "/admin/models", icon: Brain },
-  { title: "User Management", url: "/admin/users", icon: Users },
+  { title: "Configuração DB", url: "/admin/database", icon: Database },
+  { title: "Chaves API", url: "/admin/api-keys", icon: Key },
+  { title: "Models LLM", url: "/admin/models", icon: Brain },
+  { title: "Usuários", url: "/admin/users", icon: Users },
 ]
 
 export function AppSidebar() {
@@ -68,7 +68,7 @@ export function AppSidebar() {
                 <h1 className="text-base font-semibold text-foreground">
                   LLM Config
                 </h1>
-                <p className="text-xs text-muted-foreground">Dashboard</p>
+                <p className="text-xs text-muted-foreground">Painel</p>
               </div>
             )}
           </div>
@@ -77,7 +77,7 @@ export function AppSidebar() {
         {/* Main Navigation */}
         <SidebarGroup>
           <SidebarGroupLabel className="text-xs font-medium text-muted-foreground px-2">
-            {!collapsed && "MAIN"}
+            {!collapsed && "PRINCIPAL"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -137,7 +137,7 @@ export function AppSidebar() {
             {!collapsed && (
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-foreground truncate">Admin</p>
-                <p className="text-xs text-muted-foreground truncate">admin@example.com</p>
+                <p className="text-xs text-muted-foreground truncate">admin@exemplo.com</p>
               </div>
             )}
           </div>

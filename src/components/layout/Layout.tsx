@@ -32,7 +32,7 @@ export function Layout({ children }: LayoutProps) {
                 <div className="relative max-w-sm hidden md:block">
                   <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input 
-                    placeholder="Search..." 
+                    placeholder="Buscar..." 
                     className="pl-9 h-9 bg-background/50 border-border/50 focus:bg-background"
                   />
                 </div>
@@ -59,15 +59,15 @@ export function Layout({ children }: LayoutProps) {
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem onClick={() => setTheme("light")}>
                       <Sun className="mr-2 h-4 w-4" />
-                      Light
+                      Claro
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setTheme("dark")}>
                       <Moon className="mr-2 h-4 w-4" />
-                      Dark
+                      Escuro
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setTheme("system")}>
                       <Monitor className="mr-2 h-4 w-4" />
-                      System
+                      Sistema
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
